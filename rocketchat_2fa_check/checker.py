@@ -52,7 +52,7 @@ class RC2FAChecker:
         response = self._session.post(
             self._rc_webhook_url,
             json={
-                "channel": "@ulope",
+                "channel": f"@{username}",
                 "username": "2FA Bot",
                 "attachments": [
                     {
