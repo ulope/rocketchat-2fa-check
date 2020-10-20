@@ -5,20 +5,21 @@ description = ""
 authors = ["Ulrich Petri <github@ulo.pe>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9"
 click = "^7.0"
 pymongo = "^3.8"
 requests = "^2.22"
+click-pathlib = "^2020.3.13"
 
 [tool.poetry.dev-dependencies]
-pytest = "^4.0"
-black = {version = "^19.0",allows-prereleases = true}
-isort = "^4.3"
+pytest = "^6.0"
+black = {version = "^20.0",allow-prereleases = true}
+isort = "^5"
 flake8 = "^3.7"
-flake8-bugbear = "^19.3"
-flake8-tuple = "^0.3.1"
+flake8-bugbear = "^20"
+flake8-tuple = "^0.4.0"
 pylint = "^2.3"
-mypy = "^0.701.0"
+mypy = "^0.790"
 bpython = "^0.18.0"
 
 [tool.poetry.scripts]
