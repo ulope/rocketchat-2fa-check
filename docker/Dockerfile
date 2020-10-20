@@ -1,14 +1,16 @@
-FROM python:3.7 AS builder
+FROM python:3.9 AS builder
 
-ADD dist/rocketchat_2fa_check*.whl /
+ARG VERSION
+
+ADD dist/rocketchat_2fa_check-${VERSION}*.whl /
 
 RUN python3 -m venv /venv
 
 RUN /venv/bin/pip install /rocketchat_2fa_check*.whl
 
 
-FROM python:3.7
+FROM python:3.9-slim
 
 COPY --from=builder /venv /venv
 
-ENTRYPOINT ["/venv/bin/check-rc-2fa"]
+ENTRYPOINT ["/venv/bin/rc-check-2fa"]
