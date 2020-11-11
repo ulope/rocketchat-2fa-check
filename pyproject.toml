@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rocketchat-2fa-check"
-version = "0.2.0"
+version = "0.3.1"
 description = ""
 authors = ["Ulrich Petri <github@ulo.pe>"]
 
