@@ -8,7 +8,6 @@ from pprint import pformat
 from pymongo import MongoClient
 from requests import RequestException, Session
 
-
 LIST_SEP = "\n- "
 
 
@@ -101,10 +100,11 @@ class RC2FAChecker:
                         f":warning: Please remember to enable 2FA for your RocketChat account "
                         f"(`{username}`)! :warning:\n"
                         f"You have been notified {user_info.failed_count} times "
-                        f"since {user_info.failed_since:'%Y-%m-%d'}.\n\n"
+                        f"since {user_info.failed_since:%Y-%m-%d}.\n\n"
                         "(This is an automated message.)"
                     ),
                     "color": "#ff0000",
+                    "mrkdwn_in": ["text"],
                 }
             ],
         }
@@ -136,12 +136,13 @@ class RC2FAChecker:
                     {
                         "title": "RC 2FA Report",
                         "text": (
-                            f"The following users are missing 2FA and have been notified:\n"
+                            f"The following users are missing 2FA and have been notified:\n\n"
                             f"Username | Count | Since\n"
                             f"--- | --- | ---\n"
                             f"{failed_users_table}"
                         ),
                         "color": "#ff0000",
+                        "mrkdwn_in": ["text"],
                     }
                 ]
                 if reformed_users:
@@ -153,6 +154,7 @@ class RC2FAChecker:
                                 f"- {LIST_SEP.join(reformed_users)}"
                             ),
                             "color": "#00ff00",
+                            "mrkdwn_in": ["text"],
                         }
                     )
                 if failed_usernames:
@@ -164,6 +166,7 @@ class RC2FAChecker:
                                 f"- {LIST_SEP.join(failed_usernames)}"
                             ),
                             "color": "#ff4000",
+                            "mrkdwn_in": ["text"],
                         }
                     )
                 payload = {
